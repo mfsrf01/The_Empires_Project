@@ -1,0 +1,499 @@
+:root {
+  font-family: "Segoe UI", sans-serif;
+  color-scheme: dark;
+  background-color: #0a0a12;
+  color: #eef5ff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #121933, #080a16);
+  padding: 2rem 1.25rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar h2 {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-item {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.03);
+  color: inherit;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  border-color: rgba(47, 128, 237, 0.6);
+  background: rgba(47, 128, 237, 0.12);
+  outline: none;
+}
+
+.menu-item.active {
+  border-color: rgba(47, 128, 237, 0.9);
+  background: rgba(47, 128, 237, 0.2);
+}
+
+.layout main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout main header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background: linear-gradient(90deg, #1c2040, #121933);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.layout main h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#refresh-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: #2f80ed;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#refresh-btn:hover {
+  background: #296bd3;
+}
+
+.layout main > section {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem 2.5rem;
+}
+
+.panel {
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(23, 27, 52, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.planet-details {
+  margin-bottom: 0.8rem;
+}
+
+.overview-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.overview-placeholder h3 {
+  margin: 0;
+}
+
+.overview-placeholder p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+}
+
+.system-panel {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(18, 21, 44, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.system-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.system-panel__header h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+}
+
+.system-panel__header p {
+  margin: 0.2rem 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.system-panel__metrics {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: rgba(47, 128, 237, 0.08);
+  border: 1px solid rgba(47, 128, 237, 0.35);
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.system-panel__metrics span {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-width: 80px;
+}
+
+.system-panel__metrics strong {
+  font-size: 1.2rem;
+}
+
+.system-panel__intel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.system-anomalies,
+.system-belts {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(12, 15, 32, 0.7);
+  padding: 1rem;
+}
+
+.system-star {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  background: radial-gradient(circle at top, rgba(255, 200, 87, 0.15), transparent 70%), rgba(12, 15, 32, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+}
+
+.system-star header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.system-star__type {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.system-star footer {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.system-star__dyson {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.system-anomalies h5,
+.system-belts h5 {
+  margin: 0 0 0.7rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.system-anomalies__list,
+.system-belts__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.system-anomaly,
+.asteroid-belt {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.8rem;
+  background: rgba(8, 10, 24, 0.7);
+  font-size: 0.85rem;
+}
+
+.system-anomaly header,
+.asteroid-belt header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.system-anomaly p,
+.asteroid-belt p {
+  margin: 0.2rem 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.system-anomaly footer {
+  margin-top: 0.4rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+}
+
+.asteroid-belt__richness {
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.system-panel__planets h4 {
+  margin: 0 0 0.8rem;
+}
+
+.system-planets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.system-planet-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem;
+  background: rgba(11, 14, 30, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.system-planet-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.system-planet-card header h6 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.system-planet-card__environment,
+.system-planet-card__habitability {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.planet-resource-summary {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.planet-resource-summary li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.planet-resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+
+.planet-infrastructure {
+  margin-top: 1.2rem;
+}
+
+.planet-infrastructure h5 {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.infrastructure-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.infrastructure-card {
+  position: relative;
+  flex: 1 1 240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  background-color: rgba(11, 14, 30, 0.6);
+}
+
+.infrastructure-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background: linear-gradient(135deg, rgba(79, 129, 255, 0.2), transparent 55%);
+  pointer-events: none;
+}
+
+.infrastructure-card strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.infrastructure-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.infrastructure-card__action {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: not-allowed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infrastructure-card__action:disabled {
+  opacity: 0.9;
+}
+
+.planet-management {
+  margin-bottom: 1.5rem;
+}
+
+.resource-card {
+  position: relative;
+  padding: 0.8rem;
+  border-radius: 6px;
+  background-color: rgba(13, 16, 36, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.resource-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.resource-card:hover::before {
+  transform: scale(1.05);
+  opacity: 0.3;
+}
+
+.resource-card strong,
+.resource-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.resource-card--metal::before {
+  background-image: url("/images/metal_mine.png");
+}
+
+.resource-card--minerals::before {
+  background-image: url("/images/mineral_mine.png");
+}
+
+.resource-card--fuel::before {
+  background-image: url("/images/fuel_synthesizer.png");
+}
+
+.resource-card--energy::before {
+  background-image: url("/images/energy_mine.png");
+}
+
+.resource-card--research::before {
+  background-image: url("/images/laboratories.png");
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 4rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
